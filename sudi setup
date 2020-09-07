@@ -1,0 +1,13 @@
+echo Time date format:
+echo %H:%M%n%e.%m.%Y
+sleep 12
+echo starting other stuff
+sleep 1
+sudo apt-get update -y 
+timedatectl set-local-rtc 1 --adjust-system-clock
+sudo apt install ffmpeg -y 
+sudo apt install vlc -y 
+sudo apt install flameshot -y 
+sudo apt-get update -y 
+sudo apt full-upgrade -y 
+sudo apt autoremove -y 
