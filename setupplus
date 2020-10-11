@@ -1,0 +1,27 @@
+echo starting other stuff
+sleep 1
+
+sudo apt-get update -y 
+timedatectl set-local-rtc 1 --adjust-system-clock
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
+sudo apt-add-repository ppa:dolphin-emu/ppa -y
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y 
+sudo apt-get update -y 
+sudo apt install ffmpeg -y 
+sudo apt install vlc -y 
+sudo apt install flameshot -y 
+sudo apt-get install grub-customizer  -y
+sudo apt-get install dolphin-emu-master -y
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl 
+sudo chmod a+rx /usr/local/bin/youtube-dl
+sudo apt-get install screenfetch -y
+sudo apt install --install-recommends winehq-stable -y
+sudo apt-get update -y 
+sudo apt full-upgrade -y 
+sudo apt autoremove -y 
+echo finishing touch
+echo fali:
+echo audacity
+echo olive
+echo Time date format:
+echo %H:%M%n%e.%m.%Y
