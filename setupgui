@@ -1,3 +1,9 @@
+removeall()
+{
+sudo add-apt-repository --remove ppa:danielrichter2007/grub-customizer -y
+sudo apt-add-repository --remove ppa:dolphin-emu/ppa -y
+sudo add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y 
+}
 beginsetup()
 {
 sudo apt-get update -y 
@@ -18,7 +24,7 @@ response=$?
 case $response in
    0) sudo apt-get install grub-customizer  -y;;
    1) sudo add-apt-repository --remove ppa:danielrichter2007/grub-customizer -y;;
-   255) exit;;
+   255) removeall ; exit;;
 esac
 
 #dolphin
@@ -29,7 +35,7 @@ response=$?
 case $response in
    0) sudo apt-get install dolphin-emu-master -y;;
    1) sudo apt-add-repository --remove ppa:dolphin-emu/ppa -y;;
-   255) exit;;
+   255) removeall ; exit;;
 esac
 
 #wine
@@ -40,7 +46,7 @@ response=$?
 case $response in
    0) sudo apt install --install-recommends winehq-stable -y;;
    1) sudo add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y ;;
-   255) exit;;
+   255) sudo add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y ; exit;;
 esac
 
 #audacity
@@ -66,10 +72,21 @@ case $response in
    255) exit;;
 esac
 
+#gcc
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install GCC?" 7 60
+
+response=$?
+case $response in
+   0) sudo apt install gcc -y;;
+#   1) ;;
+   255) exit;;
+esac
 sudo apt-get update -y 
 sudo apt full-upgrade -y 
 sudo apt autoremove -y 
-dialog --title Information[!] --msgbox "Dodatno programi:\nolive\nTime date format : %H:%M%n%e.%m.%Y" 10 50
+dialog --title Information[!] --msgbox "Dodatno programi:\nolive\nTime date format : %H:%M%n%e.%m.%Y\n" 10 50
 }
 
 # start
