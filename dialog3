@@ -1,0 +1,1 @@
+dialog --title "Delete file" --backtitle "Linux Shell Script Tutorial Example" --yesno "Instal prog" 7 60 ; response=$? ; case $response in 0) echo "File deleted.";; 1) echo "File not deleted.";; 255) echo "[ESC] key pressed." & exit;; esac
