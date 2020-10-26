@@ -16,6 +16,8 @@ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/you
 sudo chmod a+rx /usr/local/bin/youtube-dl
 sudo apt-get install screenfetch -y
 sudo apt install --install-recommends winehq-stable -y
+sudo apt install audacity -y
+gsettings set org.nemo.desktop use-desktep-grid false
 sudo apt-get update -y 
 sudo apt full-upgrade -y 
 sudo apt autoremove -y 
