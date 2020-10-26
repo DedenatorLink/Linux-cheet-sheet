@@ -1,6 +1,4 @@
-dialog --title "Delete file" \
---backtitle "Linux Shell Script Tutorial Example" \
---yesno "Instal prog" 7 60
+dialog --title "Delete file" --backtitle "Linux Shell Script Tutorial Example" --yesno "Instal prog" 7 60
 
 # Get exit status
 # 0 means user hit [yes] button.
