@@ -1,0 +1,85 @@
+beginsetup()
+{
+sudo apt-get update -y 
+timedatectl set-local-rtc 1 --adjust-system-clock
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
+sudo apt-add-repository ppa:dolphin-emu/ppa -y
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y 
+sudo apt-get update -y 
+sudo apt install ffmpeg -y 
+sudo apt install vlc -y 
+sudo apt-get install screenfetch -y
+gsettings set org.nemo.desktop use-desktep-grid false
+#grub
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install GrubCustomizer?" 7 60
+response=$?
+case $response in
+   0) sudo apt-get install grub-customizer  -y;;
+   1) sudo add-apt-repository --remove ppa:danielrichter2007/grub-customizer -y;;
+   255) exit;;
+esac
+
+#dolphin
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install Dolphin Emulator?" 7 60
+response=$?
+case $response in
+   0) sudo apt-get install dolphin-emu-master -y;;
+   1) sudo apt-add-repository --remove ppa:dolphin-emu/ppa -y;;
+   255) exit;;
+esac
+
+#wine
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install Wine?" 7 60
+response=$?
+case $response in
+   0) sudo apt install --install-recommends winehq-stable -y;;
+   1) sudo add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' -y ;;
+   255) exit;;
+esac
+
+#audacity
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install Audacity?" 7 60
+response=$?
+case $response in
+   0) sudo apt install audacity -y;;
+#   1) ;;
+   255) exit;;
+esac
+
+#youtube-dl
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Install Youtube-dl?" 7 60
+
+response=$?
+case $response in
+   0) sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl ; sudo chmod a+rx /usr/local/bin/youtube-dl;;
+#   1) ;;
+   255) exit;;
+esac
+
+sudo apt-get update -y 
+sudo apt full-upgrade -y 
+sudo apt autoremove -y 
+dialog --title Information[!] --msgbox "Dodatno programi:\nolive\nTime date format : %H:%M%n%e.%m.%Y" 10 50
+}
+
+# start
+dialog --title "SetupGUI" \
+--backtitle "Linux Shell Script" \
+--yesno "Begin Setup" 7 60
+
+response=$?
+case $response in
+   0) beginsetup;;
+   1) exit;;
+   255) exit;;
+esac
