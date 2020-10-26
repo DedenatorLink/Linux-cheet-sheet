@@ -23,7 +23,6 @@ sudo apt full-upgrade -y
 sudo apt autoremove -y 
 echo finishing touch
 echo fali:
-echo audacity
 echo olive
 echo Time date format:
 echo %H:%M%n%e.%m.%Y
